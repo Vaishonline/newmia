@@ -41,11 +41,22 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
 
-            Route::prefix('api')
-                ->middleware('api')
-                ->group(base_path('routes/api.php'));
+//            Route::prefix('api')
+//                ->middleware('api')
+//                ->group(base_path('routes/api.php'));
+            Route::middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+
         });
     }
+
+//    protected function mapApiRoutes()
+//    {
+//        Route::middleware('api')
+//            ->namespace($this->namespace)
+//            ->group(base_path('routes/api.php'));
+//    }
 
     /**
      * Configure the rate limiters for the application.

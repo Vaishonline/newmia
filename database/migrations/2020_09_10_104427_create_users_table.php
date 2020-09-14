@@ -22,14 +22,17 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at');
             $table->string('password')->nullable();
             $table->string('remember_token',100);
-            $table->unsignedBigInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            $table->softDeletes();
-            $table->timestamps();
+
             $table->string('profile_pic');
             $table->string('token');
             $table->dateTime('phone_verified_at');
             $table->string('last_name',50);
+
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

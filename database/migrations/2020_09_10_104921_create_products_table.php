@@ -17,11 +17,13 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
-            $table->softDeletes();
-            $table->timestamps();
+
+
+            $table->text('description');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->text('description');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
