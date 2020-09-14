@@ -19,14 +19,15 @@ class CreateCostumerOrdersTable extends Migration
             $table->longText('order_detail');
             $table->double('total_cost');
             $table->string('slug');
-            $table->unsignedBigInteger('shop_id');
-            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
-            $table->timestamps();
+
             $table->string('name');
             $table->bigInteger('phone');
             $table->string('status');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('shop_id');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
